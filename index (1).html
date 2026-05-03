@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuilWorld.Craft - Official Download</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #7FFF00 0%, #90EE90 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .title {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        .download-section {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background-color: #FF0000;
+            color: white;
+            padding: 18px 40px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+        }
+
+        .download-btn:hover {
+            background-color: #CC0000;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
+        }
+
+        .download-btn:active {
+            transform: translateY(0);
+        }
+
+        .warning-section {
+            background-color: #FFE5E5;
+            border-left: 4px solid #FF0000;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+
+        .warning-title {
+            color: #FF0000;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .warning-text {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .community-section {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 1.3em;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .community-btn {
+            display: inline-block;
+            background-color: #FF0000;
+            color: white;
+            padding: 15px 35px;
+            font-size: 1.1em;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+        }
+
+        .community-btn:hover {
+            background-color: #CC0000;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
+        }
+
+        .resources-section {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #7FFF00;
+        }
+
+        .resource-item {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .resource-link {
+            display: inline-block;
+            background-color: #FF0000;
+            color: white;
+            padding: 12px 30px;
+            font-size: 1em;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+        }
+
+        .resource-link:hover {
+            background-color: #CC0000;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
+        }
+
+        .resource-label {
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .ads-section {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #7FFF00;
+        }
+
+        .ads-title {
+            font-size: 1.2em;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .ads-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            width: 100%;
+        }
+
+        .ad-item {
+            cursor: pointer;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 120px;
+            position: relative;
+        }
+
+        .ad-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .ad-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* スプラッシュスクリーン */
+        .splash-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .splash-overlay.active {
+            display: flex;
+        }
+
+        .splash-content {
+            text-align: center;
+            color: white;
+        }
+
+        .splash-image {
+            max-width: 90%;
+            max-height: 70vh;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .splash-timer {
+            font-size: 1.5em;
+            color: #FF0000;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .splash-skip {
+            margin-top: 20px;
+            padding: 10px 30px;
+            background-color: #FF0000;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .splash-skip:hover {
+            background-color: #CC0000;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px;
+            }
+
+            .title {
+                font-size: 2em;
+            }
+
+            .download-btn,
+            .community-btn,
+            .resource-link {
+                width: 100%;
+                padding: 15px 20px;
+            }
+
+            .ads-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .ad-item {
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- スプラッシュスクリーン -->
+    <div class="splash-overlay" id="splashOverlay">
+        <div class="splash-content">
+            <img id="splashImage" class="splash-image" src="" alt="広告">
+            <div class="splash-timer">
+                <span id="timerText">5</span>秒後に自動で閉じます
+            </div>
+            <button class="splash-skip" onclick="closeSplash()">スキップ</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <div class="title">BuilWorld.Craft</div>
+            <div class="subtitle">BY_official</div>
+        </div>
+
+        <div class="download-section">
+            <a href="https://u.pcloud.link/publink/show?code=XZas8O5Zd6cxFhHPKwVEjYGXsGHNnH0tW6zV" class="download-btn">
+                BuilWorld.Craftをダウンロード！
+            </a>
+        </div>
+
+        <div class="warning-section">
+            <div class="warning-title">⚠️ 重要なお知らせ</div>
+            <div class="warning-text">
+                <strong>マイクロソフトアカウントにサインしないでください！</strong><br>
+                保証ができません。<br><br>
+                <strong>オフラインで遊びましょう！</strong>
+            </div>
+        </div>
+
+        <div class="community-section">
+            <div class="section-title">制作コミュニティに参加</div>
+            <a href="https://discord.gg/pyXRzxNGPP" class="community-btn">
+                参加ボタン
+            </a>
+        </div>
+
+        <div class="resources-section">
+            <div class="section-title">リソースパック / アドオン</div>
+            
+            <div class="resource-item">
+                <span class="resource-label">スキン</span>
+                <a href="https://play.google.com/store/apps/details?id=com.mods.maps.mine&hl=ja" class="resource-link">
+                    ダウンロード
+                </a>
+            </div>
+        </div>
+
+        <!-- 広告セクション -->
+        <div class="ads-section">
+            <div class="ads-title">おすすめ</div>
+            <div class="ads-grid" id="adsGrid"></div>
+        </div>
+    </div>
+
+    <script>
+        // 広告データ
+        const ads = [
+            {
+                url: 'https://ad.games.dmm.co.jp/koihimetaisen_r02/index.html?utm_content=210184&mia0407.utm_source=Geniee&utm_medium=other&utm_campaign=nml&gsclickid=v2_107_ytLEpI9JiFyVyFxpCOwQISzaT3Plx87osAvndxE7KQ_auHqd68K5Y5_fXMzQDaFcF4eCt0mUlWtgyjeYfFSzepHueWHKHwQbFgl_Y8DvyaA',
+                image: 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22120%22 height=%22120%22%3E%3Crect fill=%22%23FF6B6B%22 width=%22120%22 height=%22120%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2216%22 font-weight=%22bold%22 fill=%22white%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3EDMM%3C/text%3E%3C/svg%3E'
+            },
+            {
+                url: 'https://qr.paypay.ne.jp/p2p01_cI8y8Xi6TYPXlFSF',
+                image: 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22120%22 height=%22120%22%3E%3Crect fill=%224ECDC4%22 width=%22120%22 height=%22120%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2216%22 font-weight=%22bold%22 fill=%22white%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3EPayPay%3C/text%3E%3C/svg%3E'
+            }
+        ];
+
+        // ページ読み込み時に広告を生成
+        window.addEventListener('DOMContentLoaded', function() {
+            const adsGrid = document.getElementById('adsGrid');
+            
+            if (adsGrid) {
+                // 8個の広告を表示
+                for (let i = 0; i < 8; i++) {
+                    const ad = ads[i % ads.length];
+                    
+                    const adItem = document.createElement('div');
+                    adItem.className = 'ad-item';
+                    
+                    const img = document.createElement('img');
+                    img.src = ad.image;
+                    img.alt = '広告';
+                    
+                    adItem.appendChild(img);
+                    adItem.onclick = function() {
+                        showSplash(ad.url, ad.image);
+                    };
+                    
+                    adsGrid.appendChild(adItem);
+                }
+            }
+        });
+
+        // スプラッシュスクリーン表示関数
+        function showSplash(url, imageUrl) {
+            const splash = document.getElementById('splashOverlay');
+            const splashImage = document.getElementById('splashImage');
+            
+            splashImage.src = imageUrl;
+            splash.classList.add('active');
+            
+            let timeLeft = 5;
+            const timerText = document.getElementById('timerText');
+            
+            const timer = setInterval(function() {
+                timeLeft--;
+                timerText.textContent = timeLeft;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    window.open(url, '_blank');
+                    closeSplash();
+                }
+            }, 1000);
+            
+            splash.dataset.timerId = timer;
+        }
+
+        // スプラッシュスクリーン閉じる関数
+        function closeSplash() {
+            const splash = document.getElementById('splashOverlay');
+            if (splash.dataset.timerId) {
+                clearInterval(parseInt(splash.dataset.timerId));
+            }
+            splash.classList.remove('active');
+        }
+    </script>
+</body>
+</html>
